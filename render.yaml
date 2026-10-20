@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: medical-storage-demo
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm run server
+    healthCheckPath: /api/status
+    autoDeployTrigger: 'off'
+    envVars:
+      - key: NODE_ENV
+        value: production

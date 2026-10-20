@@ -1,0 +1,327 @@
+{
+  "generatedAt": "2026-10-20T15:21:42.666Z",
+  "scale": {
+    "patients": 24,
+    "providers": 10,
+    "recordsPerPatient": 3,
+    "seed": 42
+  },
+  "workload": {
+    "accessRequests": 200,
+    "concurrency": 20,
+    "blockCutMs": 25,
+    "ethSim": {
+      "blockTimeMs": 350
+    }
+  },
+  "results": [
+    {
+      "name": "Centralized (baseline)",
+      "uploadLatencyAvgMs": 0.02,
+      "throughputTps": 175316.95,
+      "latencyAvgMs": 0,
+      "latencyP95Ms": 0,
+      "seedMs": 1594,
+      "violations": {
+        "total": 6,
+        "shouldDeny": 5,
+        "wrongGrants": 5,
+        "rate": 1,
+        "detail": [
+          {
+            "scenario": "valid-consent",
+            "shouldAllow": true,
+            "granted": true,
+            "wrongGrant": false,
+            "wrongDeny": false,
+            "reason": "GRANT: role-based ACL"
+          },
+          {
+            "scenario": "revoked-consent",
+            "shouldAllow": false,
+            "granted": true,
+            "wrongGrant": true,
+            "wrongDeny": false,
+            "reason": "GRANT: role-based ACL"
+          },
+          {
+            "scenario": "expired-consent",
+            "shouldAllow": false,
+            "granted": true,
+            "wrongGrant": true,
+            "wrongDeny": false,
+            "reason": "GRANT: role-based ACL"
+          },
+          {
+            "scenario": "wrong-purpose",
+            "shouldAllow": false,
+            "granted": true,
+            "wrongGrant": true,
+            "wrongDeny": false,
+            "reason": "GRANT: role-based ACL"
+          },
+          {
+            "scenario": "wrong-org-attribute",
+            "shouldAllow": false,
+            "granted": true,
+            "wrongGrant": true,
+            "wrongDeny": false,
+            "reason": "GRANT: role-based ACL"
+          },
+          {
+            "scenario": "no-consent",
+            "shouldAllow": false,
+            "granted": true,
+            "wrongGrant": true,
+            "wrongDeny": false,
+            "reason": "GRANT: role-based ACL"
+          }
+        ]
+      },
+      "storage": {
+        "ledger": {
+          "onChainBytes": 0,
+          "txCount": 78,
+          "note": "all storage operator-side"
+        },
+        "ipfs": {
+          "blocks": 0,
+          "bytes": 0
+        },
+        "dbBytes": 244850
+      }
+    },
+    {
+      "name": "Public Ethereum (baseline)",
+      "uploadLatencyAvgMs": 361.45,
+      "throughputTps": 53.06,
+      "latencyAvgMs": 344.33,
+      "latencyP95Ms": 512.35,
+      "seedMs": 1652,
+      "violations": {
+        "total": 6,
+        "shouldDeny": 5,
+        "wrongGrants": 5,
+        "rate": 1,
+        "detail": [
+          {
+            "scenario": "valid-consent",
+            "shouldAllow": true,
+            "granted": true,
+            "wrongGrant": false,
+            "wrongDeny": false,
+            "reason": "GRANT: contract mapping lookup"
+          },
+          {
+            "scenario": "revoked-consent",
+            "shouldAllow": false,
+            "granted": true,
+            "wrongGrant": true,
+            "wrongDeny": false,
+            "reason": "GRANT: contract mapping lookup"
+          },
+          {
+            "scenario": "expired-consent",
+            "shouldAllow": false,
+            "granted": true,
+            "wrongGrant": true,
+            "wrongDeny": false,
+            "reason": "GRANT: contract mapping lookup"
+          },
+          {
+            "scenario": "wrong-purpose",
+            "shouldAllow": false,
+            "granted": true,
+            "wrongGrant": true,
+            "wrongDeny": false,
+            "reason": "GRANT: contract mapping lookup"
+          },
+          {
+            "scenario": "wrong-org-attribute",
+            "shouldAllow": false,
+            "granted": true,
+            "wrongGrant": true,
+            "wrongDeny": false,
+            "reason": "GRANT: contract mapping lookup"
+          },
+          {
+            "scenario": "no-consent",
+            "shouldAllow": false,
+            "granted": true,
+            "wrongGrant": true,
+            "wrongDeny": false,
+            "reason": "GRANT: contract mapping lookup"
+          }
+        ]
+      },
+      "storage": {
+        "ledger": {
+          "onChainBytes": 343857,
+          "txCount": 284,
+          "blocks": 9
+        },
+        "ipfs": {
+          "blocks": 0,
+          "bytes": 0
+        }
+      }
+    },
+    {
+      "name": "On-Chain Only Fabric (baseline)",
+      "uploadLatencyAvgMs": 34.13,
+      "throughputTps": 1814.38,
+      "latencyAvgMs": 10.56,
+      "latencyP95Ms": 14.72,
+      "seedMs": 2285,
+      "violations": {
+        "total": 6,
+        "shouldDeny": 5,
+        "wrongGrants": 0,
+        "rate": 0,
+        "detail": [
+          {
+            "scenario": "valid-consent",
+            "shouldAllow": true,
+            "granted": true,
+            "wrongGrant": false,
+            "wrongDeny": false,
+            "reason": "GRANT: ABAC policy matched (purposes=[treatment] minRole=any)"
+          },
+          {
+            "scenario": "revoked-consent",
+            "shouldAllow": false,
+            "granted": false,
+            "wrongGrant": false,
+            "wrongDeny": false,
+            "reason": "DENY: no valid unexpired consent matches requester attributes/purpose"
+          },
+          {
+            "scenario": "expired-consent",
+            "shouldAllow": false,
+            "granted": false,
+            "wrongGrant": false,
+            "wrongDeny": false,
+            "reason": "DENY: no valid unexpired consent matches requester attributes/purpose"
+          },
+          {
+            "scenario": "wrong-purpose",
+            "shouldAllow": false,
+            "granted": false,
+            "wrongGrant": false,
+            "wrongDeny": false,
+            "reason": "DENY: no valid unexpired consent matches requester attributes/purpose"
+          },
+          {
+            "scenario": "wrong-org-attribute",
+            "shouldAllow": false,
+            "granted": false,
+            "wrongGrant": false,
+            "wrongDeny": false,
+            "reason": "DENY: no valid unexpired consent matches requester attributes/purpose"
+          },
+          {
+            "scenario": "no-consent",
+            "shouldAllow": false,
+            "granted": false,
+            "wrongGrant": false,
+            "wrongDeny": false,
+            "reason": "DENY: no consent record for this record"
+          }
+        ]
+      },
+      "storage": {
+        "ledger": {
+          "txCount": 396,
+          "blockCount": 216,
+          "onChainBytes": 474567,
+          "blockBytes": 523645,
+          "stateKeys": 395
+        },
+        "ipfs": {
+          "blocks": 0,
+          "bytes": 0,
+          "pinned": 0
+        }
+      }
+    },
+    {
+      "name": "Proposed: Fabric + IPFS + ABAC",
+      "uploadLatencyAvgMs": 25.35,
+      "throughputTps": 2020.26,
+      "latencyAvgMs": 9.58,
+      "latencyP95Ms": 12.48,
+      "seedMs": 2205,
+      "violations": {
+        "total": 6,
+        "shouldDeny": 5,
+        "wrongGrants": 0,
+        "rate": 0,
+        "detail": [
+          {
+            "scenario": "valid-consent",
+            "shouldAllow": true,
+            "granted": true,
+            "wrongGrant": false,
+            "wrongDeny": false,
+            "reason": "GRANT: ABAC policy matched (purposes=[treatment] minRole=any)"
+          },
+          {
+            "scenario": "revoked-consent",
+            "shouldAllow": false,
+            "granted": false,
+            "wrongGrant": false,
+            "wrongDeny": false,
+            "reason": "DENY: no valid unexpired consent matches requester attributes/purpose"
+          },
+          {
+            "scenario": "expired-consent",
+            "shouldAllow": false,
+            "granted": false,
+            "wrongGrant": false,
+            "wrongDeny": false,
+            "reason": "DENY: no valid unexpired consent matches requester attributes/purpose"
+          },
+          {
+            "scenario": "wrong-purpose",
+            "shouldAllow": false,
+            "granted": false,
+            "wrongGrant": false,
+            "wrongDeny": false,
+            "reason": "DENY: no valid unexpired consent matches requester attributes/purpose"
+          },
+          {
+            "scenario": "wrong-org-attribute",
+            "shouldAllow": false,
+            "granted": false,
+            "wrongGrant": false,
+            "wrongDeny": false,
+            "reason": "DENY: no valid unexpired consent matches requester attributes/purpose"
+          },
+          {
+            "scenario": "no-consent",
+            "shouldAllow": false,
+            "granted": false,
+            "wrongGrant": false,
+            "wrongDeny": false,
+            "reason": "DENY: no consent record for this record"
+          }
+        ]
+      },
+      "storage": {
+        "ledger": {
+          "txCount": 396,
+          "blockCount": 216,
+          "onChainBytes": 241167,
+          "blockBytes": 290184,
+          "stateKeys": 395
+        },
+        "ipfs": {
+          "blocks": 78,
+          "bytes": 173375,
+          "pinned": 78
+        }
+      }
+    }
+  ],
+  "tables": "\n### TABLE II — Throughput and latency by configuration (measured)\n\n| Configuration | Throughput (tps) | Avg latency (ms) | P95 latency (ms) | Upload latency avg (ms) | Qualitative |\n|---|---|---|---|---|---|\n| Centralized (baseline) | 175316.95 | 0 | 0 | 0.02 | Highest throughput / Highest latency |\n| Public Ethereum (baseline) | 53.06 | 344.33 | 512.35 | 361.45 | Lowest throughput / Lowest latency |\n| On-Chain Only Fabric (baseline) | 1814.38 | 10.56 | 14.72 | 34.13 | Moderate throughput / Moderate latency |\n| Proposed: Fabric + IPFS + ABAC | 2020.26 | 9.58 | 12.48 | 25.35 | Moderate throughput / Moderate latency |\n\n### TABLE III — Access-control violations and storage distribution (measured)\n\n| Configuration | Policy violation rate | Wrong grants / denied-by-policy | On-chain ledger bytes | Off-chain (IPFS/DB) bytes |\n|---|---|---|---|---|\n| Centralized (baseline) | 1 | 5 / 5 | 0 | 244850 |\n| Public Ethereum (baseline) | 1 | 5 / 5 | 343857 | 0 |\n| On-Chain Only Fabric (baseline) | 0 | 0 / 5 | 474567 | 0 |\n| Proposed: Fabric + IPFS + ABAC | 0 | 0 / 5 | 241167 | 173375 |\n"
+}
